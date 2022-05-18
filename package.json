@@ -10,11 +10,12 @@
     "build": "quasar build",
     "build:pwa": "quasar build -m pwa",
     "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "icons": "icongenie generate -i src/icon/AppIcon.png --skip-trim"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
+    "firebase": "^8.2.3",
     "quasar": "^1.0.0"
   },
   "devDependencies": {

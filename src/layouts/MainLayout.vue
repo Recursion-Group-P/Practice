@@ -11,6 +11,20 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
+        <q-btn
+          v-if="!loggedIn"
+          flat
+          class="absolute-right" 
+        />
+        <q-btn
+          v-else
+          flat
+          icon-right="account_circle"
+          label="Logout"
+          class="absolute-right" 
+          @click="logoutUser"
+        />
+
         <q-toolbar-title>
           Blokee
         </q-toolbar-title>
@@ -74,6 +88,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'MainLayout',
@@ -107,6 +123,12 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    ...mapState('auth', ['loggedIn'])
+  },
+  methods: {
+    ...mapActions('auth', ['logoutUser'])
   }
 }
 </script>

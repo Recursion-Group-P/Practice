@@ -1,56 +1,53 @@
 <template>
-    <q-page class="q-pa-md">
-    <q-list
-      separator
-      bordered
-    >
+  <q-page padding>
+    <q-card class="auth-tabs">
+        <q-tabs
+          v-model="tab"
+          dense
+          class="text-grey"
+          active-color="primary"
+          indicator-color="primary"
+          align="justify"
+          narrow-indicator
+        >
+          <q-tab name="login" label="Login" />
+          <q-tab name="register" label="Register" />
+        </q-tabs>
 
-      <Task
-        v-for="(task, key) in tasks"
-        :key="key"
-        :task="task"
-        :id="key"
-      />
+        <q-separator />
 
-      <div class="absolute-bottom text-center q-mb-lg">
-      <q-btn
-        @click="showAddTask = true"
-        round
-        color="primary"
-        size="24px"
-        icon="add"
-      />
-    </div>
+        <q-tab-panels v-model="tab" animated>
+          <q-tab-panel name="login">
+            <LoginRegister :tab="tab"/>
+          </q-tab-panel>
 
-    <q-dialog v-model="showAddTask">
-      <AddTask @close="showAddTask = false" />
-    </q-dialog>
-    </q-list>
+          <q-tab-panel name="register">
+            <LoginRegister :tab="tab"/>
+          </q-tab-panel>
+
+        </q-tab-panels>
+      </q-card>
   </q-page>
-    
 </template>
 
 <script>
-import Task from '../components/Task.vue'
-import AddTask from '../components/AddTask.vue'
+import LoginRegister from '../components/LoginRegister.vue'
 
-import { mapGetters } from 'vuex'
-
-export default {
-  data() {
-    return {
-      showAddTask: false
+  export default {
+    data () {
+      return {
+        tab: 'login'
+      }
+    },
+    components: {
+      LoginRegister
     }
-  }, 
-  computed: {
-    ...mapGetters('tasks', ['tasks'])
-  },
-  components: {
-    Task,
-    AddTask
-  }
 }
 </script>
 
 <style>
+  .auth-tabs {
+    max-width: 500px;
+    margin: 0 auto;
+  }
 </style>
