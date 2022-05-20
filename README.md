@@ -4,8 +4,6 @@ A Quasar Project
 
 ## Install the dependencies
 ```bash
-yarn
-# or
 npm install
 ```
 
@@ -17,8 +15,6 @@ quasar dev
 
 ### Lint the files
 ```bash
-yarn lint
-# or
 npm run lint
 ```
 
